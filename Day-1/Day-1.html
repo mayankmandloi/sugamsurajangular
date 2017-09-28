@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="utf-8">
+  <title>Web Bhumi</title>
+  <script src="../js/angular.min.js" charset="utf-8"></script>
+</head>
+<body>
+  <div class="" ng-app="myModule">
+    <div class="" ng-controller="surajController">
+      <input type="text" name="" value="" ng-model="name">
+      {{name}}
+    </br>
+    {{2+3}}
+
+  </div>
+
+
+  <div class="" ng-controller="sugamController">
+    <input type="text" name="" value="" ng-model="name">
+    {{name}}
+  </br>
+  {{2+3}}
+
+</div>
+</div>
+</body>
+<script type="text/javascript">
+var app = angular.module("myModule",[]);
+app.controller("surajController",function ($scope) {
+  $scope.name="Suraj";
+});
+
+app.controller("sugamController",function ($scope) {
+  $scope.name="Sugam";
+});
+</script>
+</html>
