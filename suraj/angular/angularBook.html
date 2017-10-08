@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Book Data</title>
+	<link rel="stylesheet" href="">
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/book.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container" ng-app="bookModel">
+		<div class="row" ng-controller="Allbooks my bookControl">
+			<input type="text" name="" value="" ng-model="serchBook">
+			<div class="col-sm-3" ng-repeat="myBook in bookControl.Book">
+				{{myBook.Title}}
+			</div>
+		</div>		
+	</div>
+</body>
+<script type="text/javascript">
+	var Book = angular.module('bookModel', []);
+		Book.controller('bookControl', function(){
+	
+	})
+	
+</script>
+</html>
