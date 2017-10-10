@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Web Bhumi</title>
+    <style media="screen">
+      table,td,th
+      {
+        border: 6px groove red;
+        border-collapse: collapse;
+        box-shadow: 0px 0px 3px 5px black;
+        font-size: 28px;
+        text-align: center;
+      }
+    </style>
+    <script src="../js/angular.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+      <div class="" ng-app="bachhoKaModule">
+        <div class="" ng-controller="bachhoKiDetails as details">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Age</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="bachha in details.bheed|orderBy:'-name'">
+                <td>{{bachha.name}}</td>
+                <td>{{bachha.age}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </body>
+
+
+
+<script type="text/javascript">
+ var app= angular.module("bachhoKaModule",[]);
+app.controller("bachhoKiDetails",function(){
+this.bheed=[{name:"Suraj",age:24},{name:"Sugam",age:23},{name:"Nidhi",age:23},{name:"Shubham",age:23},{name:"Neha",age:23},{name:"Sumit",age:23},{name:"Rahul",age:23},{name:"Anuj",age:23},{name:"Rajendra",age:23}];
+});
+</script>
+</html>
