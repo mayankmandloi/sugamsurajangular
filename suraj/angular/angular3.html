@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Sorting </title>
+	<link rel="stylesheet" href="">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	<script type="text/javascript" src="js/angular.min.js"></script>
+  	<style type="text/css" media="screen">
+	td, th {
+	    padding: 5px;
+	    border: 3px solid #f77c12;
+}
+	</style>	
+</head>
+<body>
+	<div ng-app="bachhoKaModule">
+		<div ng-controller="bachhoKiDetails as details">
+			<table style="width:300px; margin: 0px auto;">
+				<caption style="text-align: center; font-size: 20px;color: #222;">Baccho Ki Details</caption>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Age</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="baccka in details.bachheLog|orderBy:'-Name'">
+						<td>{{baccka.Name}}</td>
+						<td>{{baccka.Age}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+</body>
+<script type="text/javascript">
+	var app= angular.module('bachhoKaModule',[]);
+	app.controller('bachhoKiDetails', function(){
+		this.bachheLog=[{Name:'Suraj', Age:25}, {Name:'Damini', Age:22}, {Name:'Sugam', Age:23}, {Name:'Nidhi', Age:22}, {Name:'Shubham', Age:20}, {Name:'Rahul', Age:26}, {Name:'Rajendra', Age:27}, {Name:'Sachin', Age:28}, {Name:'Mayur', Age:25}, {Name:'Kapil', Age:23}, {Name:'Chetan', Age:29}, {Name:'Rajesh', Age:24}]	
+	})
+</script>
+</html>
