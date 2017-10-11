@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Web Bhumi</title>
+    <style media="screen">
+      table,td,th
+      {
+        border: 6px groove red;
+        border-collapse: collapse;
+        box-shadow: 0px 0px 3px 5px black;
+        font-size: 28px;
+        text-align: center;
+      }
+    table
+    {
+      margin-top: 20px;
+    }
+    </style>
+    <script src="../js/angular.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+      <div class="" ng-app="bachhoKaModule">
+        <div class="" ng-controller="bachhoKiDetails as details">
+          +Name<input type="radio" name="name" value="name" ng-model="details.searchData">
+          -Name<input type="radio" name="name" value="-name" ng-model="details.searchData">
+          +Age<input type="radio" name="name" value="age" ng-model="details.searchData">
+          -Age<input type="radio" name="name" value="-age" ng-model="details.searchData">
+          <table class="table">
+            <thead>
+              <tr>
+                <th ng-click="details.setSearchData('name')">Name</th>
+                <th ng-click="details.setSearchData('age')">Age</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="bachha in details.bheed|limitTo:3|orderBy:details.searchData">
+                <td>{{bachha.name|uppercase}}</td>
+                <td>{{bachha.age}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </body>
+
+
+
+<script type="text/javascript">
+ var app= angular.module("bachhoKaModule",[]);
+app.controller("bachhoKiDetails",function()
+{
+this.bheed=[{name:"Suraj",age:24},
+{name:"Sugam",age:23},
+{name:"Nidhi",age:23},
+{name:"Shubham",age:23},
+{name:"Neha",age:23},
+{name:"Sumit",age:23},
+{name:"Rahul",age:23},
+{name:"Anuj",age:23},
+{name:"Rajendra",age:23}];
+
+this.setSearchData=function(arg){
+if(this.searchData==arg)
+{
+this.searchData="-"+arg;
+}
+else
+{
+this.searchData=arg;
+}
+}
+});
+</script>
+</html>
