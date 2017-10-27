@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<style type="text/css" media="screen">
+	td, th {
+	    padding: 5px;
+	    border: 3px solid #f77c12;
+}
+	</style>	
+</head>
+<body>
+	<div ng-app="myModule">
+		<div ng-controller="myController as myc">
+			<table style="width:300px; margin: 0px auto;">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Age</th>
+						<th>Toggle</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="bachha in myc.bheed">
+						<td>{{bachha.name}}</td>
+						<td ng-show="bachha.show" ng-click="bachha.show=false">{{bachha.age}}</td>
+						<td ng-click="bachha.show=true" ng-hide="bachha.show">###</td>
+						<td ng-click="bachha.show=false" ng-show="bachha.show"><button type="">Hide</button></td>
+						<td ng-hide="bachha.show" ng-click="bachha.show=true"><button type="">Show</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var app = angular.module('myModule',[]);
+	app.controller('myController', function(){
+	this.bheed=[{name:"Suraj",age:24},
+		{name:"Sugam",age:23},
+		{name:"Nidhi",age:23},
+		{name:"Shubham",age:23},
+		{name:"Neha",age:23},
+		{name:"Sumit",age:23},
+		{name:"Rahul",age:23},
+		{name:"Anuj",age:23},
+		{name:"Rajendra",age:23}];	
+	})
+</script>
+
+</html>
