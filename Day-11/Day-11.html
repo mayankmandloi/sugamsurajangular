@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Web Bhumi</title>
+  </head>
+  <body>
+    <div class="" ng-app="myModule">
+      <div class="" ng-controller="myController">
+        <show-details></show-details>
+      </div>
+      <div ng-controller="myController2">
+        <show-details></show-details>
+      </div>
+    </div>
+  </body>
+<script src="../js/angular.min.js" charset="utf-8"></script>
+<script>
+//creating a module
+  angular.module("myModule",[]);
+//creating a controller-1
+  angular.module("myModule").controller("myController",function($scope){
+    $scope.person={name:"Suraj",number:"8602595142",address:"Indore"};
+
+});
+//creating a controller-2
+angular.module("myModule").controller("myController2",function($scope){
+    $scope.person={name:"Sugam",number:"98755654075",address:"A-15 Prime City Sukliya"};
+
+});
+
+//creating a directive
+angular.module("myModule").directive("showDetails",function(){
+return {
+template:"<p>Hi I am {{person.name}} and my Number is {{person.number}} and I live at {{person.address}}</p>"
+};
+})
+</script>
+</html>

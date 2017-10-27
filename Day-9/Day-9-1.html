@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Web Bhumi</title>
+  <script src="../js/angular.min.js" charset="utf-8"></script>
+</head>
+<body>
+  <div class="" ng-app="myModule">
+    <div class="" ng-controller="myController as myc">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+  
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="bachha in myc.bheed">
+            <td>{{bachha.name}}</td>
+            <td ng-show="bachha.show" ng-click="bachha.show=flase">{{bachha.age}}</td>
+            <td  ng-click="bachha.show=true" ng-hide="bachha.show" >###</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var app=  angular.module("myModule",[]);
+    app.controller("myController",function(){
+
+      this.bheed=[
+      {name:"Suraj",age:24},
+      {name:"Sugam",age:23},
+      {name:"Nidhi",age:23},
+      {name:"Shubham",age:23},
+      {name:"Neha",age:23},
+      {name:"Sumit",age:23},
+      {name:"Rahul",age:23},
+      {name:"Anuj",age:23},
+      {name:"Rajendra",age:23}]
+    });
+  </script>
+</body>
+</html>
