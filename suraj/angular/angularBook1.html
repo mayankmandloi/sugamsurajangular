@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/book.js"></script>
+</head>
+<body>
+	<div ng-app="myModule">
+		<div ng-controller="myController as book">
+			<input type="text" ng-model="tt.Title" name="" value="" placeholder="">
+			<table>
+				<caption>Book Data</caption>
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Image</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="allbook in book.Itbook|filter:tt.Title">
+						<td>{{allbook.Title}}</td>
+						<td>{{allbook.Description}}</td>
+						<td><img src="{{allbook.Image}}" width="100%" alt=""></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var Itbook = angular.module('myModule', []);
+	Itbook.controller('myController', function(){
+		this.Itbook=book
+	})
+</script>
+</html>
