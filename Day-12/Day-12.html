@@ -9,7 +9,7 @@
 <body ng-app="myModule">
     <div ng-controller="myController">
         <div ng-repeat="log in bheed">
-            <show-details guy="log" fun="test()"></show-details>
+            <show-details guy="log" fun="test(tt)"></show-details>
         </div>
     </div>
 </body>
@@ -27,8 +27,8 @@
       {name:"Rahul",age:23,color:"orange"},
       {name:"Anuj",age:23,color:"red"},
       {name:"Rajendra",age:23,color:"cryn"}];
-      $scope.test=function () {
-          console.log("Hello I am Data");
+      $scope.test=function (tt) {
+          console.log(tt);
       }
       $scope.test1=function () {
           window.alert("Hello I am Data");
@@ -38,7 +38,7 @@
 
     angular.module("myModule").directive("showDetails",function(){
             return{
-                template:"<p>hi I am {{guy.name}} I am {{guy.age}} years old my fav color is <span ng-click='fun()'>{{guy.color}}</span></p>",
+                template:"<p>hi I am {{guy.name}} I am {{guy.age}} years old my fav color is <span ng-click=\"fun({tt:guy})\">{{guy.color}}</span></p>",
                 scope:{guy:"=",fun:'&'},
                 restrict: 'E',
                 transclude: true,

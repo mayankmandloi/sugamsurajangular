@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Bhumi</title>
+</head>
+<body>
+    <div data-ng-app="bookModule">
+        <div ng-controller="viewBookController">
+            {{name}}
+            <input type="text" name="" id="" ng-model="searchText">
+            <button ng-click="search()">Search</button>
+            <h1 ng-repeat="book in Books">{{book.Title}}</h1>
+        </div>
+    </div>
+</body>
+<script src="../js/angular.min.js"></script>
+<script>
+    var app = angular.module("bookModule",[]);
+    app.controller("viewBookController",function ($scope,$http) {
+        $scope.name="Web Bhumi";
+        $scope.search=function()
+        {
+            $http.get("http://it-ebooks-api.info/v1/search/"+$scope.searchText).then(
+            function success(responseData) {
+                console.log(":)");
+                console.log(responseData.data);
+                $scope.Books=responseData.data.Books;
+            },function failure(responseData) {
+                console.log(responseData);
+                console.log(":(");
+            }
+        )
+        }
+    })
+</script>
+</html>

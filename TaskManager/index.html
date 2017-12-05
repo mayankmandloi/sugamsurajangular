@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Bhumi</title>
+    <style>
+        table,td,th
+        {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        .disable
+        {
+            color: gray;
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<body>
+<div ng-app="taskManager">
+
+    <div ng-controller="taskController as tc" ng-init="tc.showForm=false">
+        <button ng-click="tc.showForm=true">Add new Task</button>
+            <form ng-show="tc.showForm">
+                <input type="text" ng-model="tc.task.title" placeholder="title">
+                <input type="text" ng-model="tc.task.description" placeholder="description">
+                <input type="text" ng-model="tc.task.priority" placeholder="priority">
+                <button ng-click="tc.addNewTask(tc.task)">Add</button>
+            </form>
+            <table ng-show="tc.taskList.length">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>priority</th>
+                        <th>completed</th>
+                        <th>delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="task in tc.taskList" ng-class="{disable:task.status==true}">
+                        <td>{{task.title}}</td>
+                        <td>{{task.description}}</td>
+                        <td>{{task.priority}}</td>
+                        <td><input type="checkbox" ng-click="tc.toggleStatus(task)"></td>
+                        <td><button ng-click="tc.delete(task)" ng-hide="task.status">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+</div>    
+</body>
+<script src="../js/angular.min.js"></script>
+<script>
+    (function () {
+        angular.module("taskManager",[]);
+        angular.module("taskManager").controller("taskController",function () {
+            this.toggleStatus=function(task)
+            {
+                if(task.status)
+                {
+                    task.status=false;
+                }
+                else
+                {
+                    task.status=true;
+                }
+            }
+            this.delete=function (task)
+            {
+                this.taskList.splice(this.taskList.indexOf(task),1);
+            };
+            this.taskList=[];
+            this.newTask=function(title,description,priority)
+            {
+                this.title=title;
+                this.description=description;
+                this.priority=priority;
+                this.status;
+            }
+            this.addNewTask =function(task)
+            {
+                var task1 =new this.newTask(task.title,task.description,task.priority);
+                this.taskList.push(task1);
+                this.showForm=false;
+                this.task={};
+            }
+        })
+    })();
+</script>
+</html>

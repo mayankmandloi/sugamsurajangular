@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Bhumi</title>
+    <style>
+        .completed{
+            text-decoration: line-through;
+            color: grey;
+            
+        }
+    </style>
+</head>
+<body ng-app="todoListApp">
+    <div ng-controller="mainList as ml">
+        <p ng-repeat="task in ml.taskList" ng-class="{completed:task.status}">
+            <input type="checkbox" ng-model="task.status">
+            {{task.description}}
+        </p>
+        <form>
+            <input type="text" ng-model="taskDesc">
+ 
+            <button ng-click="ml.addNewTask(taskDesc)">Add</button>
+        </form>
+    </div>
+</body>
+<script src="js/angular.min.js"></script>
+<script>
+    angular.module("todoListApp",[]);
+    angular.module("todoListApp").controller("mainList",function () {
+        var self = this;
+        self.taskList=[];
+        self.addNewTask=function(desc)
+        {
+            function task(desc)
+            {
+                
+                this.description=desc;
+                this.status=false;
+            }
+            
+            self.taskList.push(new task(desc));
+
+        }
+    })
+</script>
+</html>
