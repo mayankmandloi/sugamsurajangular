@@ -29,7 +29,8 @@
 <script src="js/angular.min.js"></script>
 <script>
     angular.module("todoListApp",[]);
-    angular.module("todoListApp").controller("mainList",function () {
+    angular.module("todoListApp").controller("mainList",function ($http) {
+        $http.defaults.headers.post["Content-Type"] = "text/plain";
         var self = this;
         self.taskList=[];
         self.addNewTask=function(desc)
@@ -40,8 +41,9 @@
                 this.description=desc;
                 this.status=false;
             }
-            
-            self.taskList.push(new task(desc));
+            var task = new task(desc)
+            self.taskList.push(task);
+            $http.post("http://localhost/Task/getMail(1).php",task).then(function(res){console.log(res)},function(res){console.log(res)})
 
         }
     })

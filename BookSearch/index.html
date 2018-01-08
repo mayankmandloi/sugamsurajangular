@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myModule">
+<ul><li> <a href=".#!/">mayank</a> </li>
+<li> <a href=".#!/sourabh">Sourabh</a> </li>
+<li> <a href=".#!/suraj">suraj</a> </li>
+<li> <a href=".#!/shubham">shubhu</a> </li></ul>
+<ng-view></ng-view>
+
+
+    <script src="angular.min.js"></script>
+    <script src="angular-route.min.js"></script>
+
+    <script>
+    var app = angular.module("myModule",["ngRoute"]);
+    app.config(function($routeProvider){
+
+        $routeProvider.when("/",{
+            template:"<h1>Mayank</h1>"
+        });
+
+        $routeProvider.when("/sourabh",{
+            templateUrl:"sourabh.html"
+        });
+
+        $routeProvider.when("/suraj",{
+            templateUrl:"suraj.html",
+            controller:function($scope)
+                $scope.name="Sooooraj";
+        });
+
+        $routeProvider.when("/shubham",{
+            template:"<h1>I am Nirmal</h1>"
+        });
+
+    })
+    </script>
+</body>
+</html>

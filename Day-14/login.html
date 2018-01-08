@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    
+    
+</head>
+
+<body ng-app="myModule">
+
+        <div ng-controller="myc">
+            <input type="text" ng-model="name">
+                {{name}}
+                </div>
+                <hr>
+                <div ng-controller="myc">
+                    <input type="text" ng-model="name">
+                {{name}}
+                </div>
+<!-- <ng-view></ng-view>  -->
+
+<script src="./books/js/angular.min.js"></script>
+<script src="./books/js/angular-route.js"></script>
+<script src="app.js"></script>
+</body>
+
+</html>
+
+
+
+
+<script>
+
+app.controller("myc",function($scope){
+    $scope.name="shubham";
+})
+</script>
