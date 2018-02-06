@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng:app="myModule" data-ng-controller="myController">
+<span ng-repeat="a in someArr">{{a}}<br/> </span>
+<input type="text" name="" id="" ng-model="jj">
+</body>
+<script src="../js/angular.min.js"></script>
+<script>
+    angular.module("myModule",[]).controller("myController",function($scope){
+        $scope.arr = [1,2,3,4,5,6,7,8,9,0];
+        $scope.someArr=[];
+        $scope.obj= {name:"Shubham",age:22,bloodgrp:"B+"};
+        // angular.forEach($scope.arr,function(item){
+        // console.log(item);
+        // });
+
+        angular.forEach($scope.obj,function(item,key){
+        console.log(key+" is "+item);
+        $scope.someArr.push(key+" is "+item);
+
+        });
+    })
+</script>
+</html>

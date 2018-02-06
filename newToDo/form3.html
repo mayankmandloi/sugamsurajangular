@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .done
+    {
+        text-decoration: line-through;
+        color: grey;
+    }
+    </style>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="createTaskController">
+    <form > 
+
+        <input type="text" ng-model="id">
+        <input type="text" ng-model="title">
+        <input type="text" ng-model="description">
+        <input type="date" ng-model="enddate">
+        <button type="button" ng-click="createTask()">Save</button>
+    </form>
+
+
+    <table>
+<thead>
+    <tr>
+        <th>No</th>
+        <th>Title</th>
+        <th>description</th>
+        <th>Creation Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+    </tr>
+</thead>
+<tbody>
+
+    <tr ng-repeat="task in taskList" ng-class="{done:task.status,dana:true}">
+        <td >{{task.id}}</td>
+        <td >{{task.title}}</td>
+        <td >{{task.description}}</td>
+        <td >{{task.creationdate|date}}</td>
+        <td >{{task.enddate|date}}</td>
+        <td ><input type="checkbox" ng-model="task.status"></td>
+    </tr>
+</tbody>
+
+    </table>
+
+</div>
+
+    <script src="../js/angular.js"></script>
+    <script>
+    var app = angular.module("myApp",[]);
+    app.controller("createTaskController",function($scope){
+    $scope.taskList=[];
+     $scope.createTask= function()
+     {
+        function originalCreateTask (id,title,description,enddate)
+    {
+	this.id=id;
+	this.title=title;
+	this.description=description;
+	this.creationdate= new Date();
+	this.enddate=enddate;
+	this.status=false;
+    }
+    var task = new originalCreateTask($scope.id,$scope.title,$scope.description,$scope.enddate);
+    $scope.taskList.push(task);
+     }
+    })
+</script>
+</body>
+</html>

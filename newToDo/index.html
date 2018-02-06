@@ -6,13 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
+<body ng-app="myApp">
     
-  <script src="main.js"></script>  
-  <script>
-  console.log(task1);
-  var task2 = new createTask(1,"Some Other Task","Some Other Description",new Date("2018-01-23"));
-  console.log(task2);
-  </script>
+    <ul>
+        <li><a href="#!/">Shubham</a></li>
+        <li><a href="#!/soo">Suraj</a></li>
+    </ul>
+    <ng-view></ng-view>
+
+    <script src="../js/angular.js"></script>
+    <script src="../js/angular-route.min.js"></script>
+
+    <script>
+    
+        var app = angular.module("myApp",["ngRoute"]);
+        app.config(function($routeProvider){
+
+            $routeProvider.when("/",{
+                    template:"<h1>Shubham _______ hai.</h1>"
+            });
+
+            $routeProvider.when("/soo",{
+                    template:"<h2>Suraj _______ hai.</h2>"
+            });
+        })
+
+    </script>
 </body>
 </html>
