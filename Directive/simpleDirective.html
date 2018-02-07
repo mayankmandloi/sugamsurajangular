@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myModule" ng-controller="SourabhSir">
+<shubham-nirmal ng-repeat=" a in someArray"></shubham-nirmal>
+</body>
+<script src="../js/angular.min.js"></script>
+<script>
+    var app=angular.module("myModule",[]);
+    app.directive("shubhamNirmal",function(){
+        return {
+        template:"<h1>Hi I am Shubham Nirmal and I live at Tilak Nagar</h1>"
+    };
+    })
+    app.controller("SourabhSir",function($scope){
+        $scope.someArray=[1,2,3,4,5,6,8,9,61,15,42,24,45,56,561,156,60,415];
+    })
+</script>
+</html>
