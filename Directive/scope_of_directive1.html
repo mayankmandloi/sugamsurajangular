@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myModule">
+    <div ng-controller="meraController">
+
+    <person name="person1.name" aut="auther"></person>   
+    <input type="text" ng-model="person1.name">    
+    <input type="text" ng-model="auther">
+    <hr>
+    <person1 name="person1.name" aut="auther" str="auther" fun="logg()"></person1>   
+    
+      
+    </div>
+    
+</body>
+
+<script src="../js/angular.min.js"></script>
+<script>
+
+    var app=angular.module("myModule",[]);
+    app.controller("meraController",function($scope){
+        $scope.auther="Mayank"
+        $scope.person1={name:"Shubham Nirmal",number:8109191885,address:"Indore"};
+        $scope.person2={name:"Suraj Chouhan",number:8602595142,address:"Indore"};
+        $scope.person3={name:"Sourabh Bhawalkar",number:9424885118,address:"Indore"};
+        $scope.alt=function()
+        {
+            window.alert("Haye ram");
+        };
+        $scope.logg=function()
+        {
+            console.log("hey ram");
+        };
+    });
+    app.directive("person",function(){
+        return {
+            template:"<h1>Name {{name}} by {{aut}}</h1>",
+            scope:{
+                name:"=",
+                aut:"<"
+            }
+        }
+    })
+
+    app.directive("person1",function(){
+        return {
+            template:"<input type=\"text\" ng-model=\"aut\"><br/><input type=\"text\" ng-model=\"name\"> <span ng-click=\"fun()\">{{str}}{{aut}}</span>",
+            scope:{
+                name:"=",
+                aut:"<",
+                str:"@",
+                fun:"&"
+            }
+        }
+    })
+</script>
+</html>
