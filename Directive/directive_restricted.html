@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myModule">
+    element <some-directive></some-directive>
+    attribute <div some-directive=""></div>
+    class<div class="some-directive"></div>
+    comment <!-- directive:some-directive -->
+</body>
+<script src="../js/angular.min.js"></script>
+<script>
+    var app=angular.module("myModule",[])
+    app.directive("someDirective",function(){
+       var config= {
+            template:"<h1>Hi I am {{adj}} Shubham {{myc.surname}}</h1>",
+            restrict:"ACEM",
+            replace:true,
+            controller:function($scope){
+                $scope.adj="samajdaar bachha ";
+                this.surname="Nirmal";
+            },
+            controllerAs:"myc"
+        };
+        return config;
+    })
+</script>
+</html>
