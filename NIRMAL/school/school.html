@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/angular.min.js"></script>
+	</head>
+	<body ng-app="myModule">
+		<div ng-controller="schoolController">
+			{{name}}
+			<input type="text" ng-model="searchText">
+			<button ng-click="search()">Search</button>
+			<div ng-repeat="student in schools"></div>
+			<p>{{student.name}}</p>
+			<p>{{student.website}}</p>
+			<p>{{student.levels}}</p>
+			<p>{{student.format}}</p>
+			<p>{{student.format_description}}</p>
+			<p>{{student.gender}}</p>
+		</div>
+	</body>
+	<script>
+	var app = angular.module("myModule",[]);
+	app.controller("schoolController",function ($scope,$http) {
+	$scope.name="School data";
+	$scope.search=function()
+	{
+	$http.get("https://code.org/schools.json"+$scope.searchText).then(
+	function success(responseData) {
+	console.log(":)");
+	console.log(responseData.data);
+	$scope.schools=responseData.data.schools;
+	},function failure(responseData) {
+	console.log(responseData);
+	console.log(":(");
+	}
+	)
+	}
+	})
+	</script>
+</html>
