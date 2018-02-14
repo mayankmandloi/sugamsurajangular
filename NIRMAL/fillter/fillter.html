@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/angular.min.js"></script>
+	</head>
+	<body ng-app="myModule">
+		<div ng-controller="myController">
+			<div>{{developer |case}}</div>
+			<div>{{developer |slice}}</div>
+			<div>{{developer |index}}</div>
+		</div>
+			<script>
+			var app=angular.module("myModule",[]);
+			app.controller("myController",["$scope",function($scope){
+        	$scope.developer="I'm Java Script Developer";
+    		}]);
+			
+			app.filter("case",function(){
+				return function (item){
+						return item.toUpperCase();
+
+				}
+			});
+				app.filter("slice",function(){
+				return function (item1){
+						return item1.slice(5);
+
+				}
+			});
+						app.filter("index",function(){
+				return function (item1){
+						return item1.lastIndexOf("Developer"); 
+
+				}
+			});	
+			</script>
+
+		</body>
+	</html>
