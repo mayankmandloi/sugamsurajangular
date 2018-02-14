@@ -10,22 +10,26 @@
 			{{name}}
 			<input type="text" ng-model="searchText">
 			<button ng-click="search()">Search</button>
-			<div ng-repeat="student in schools"></div>
-			<p>{{student.name}}</p>
-			<p>{{student.website}}</p>
-			<p>{{student.levels}}</p>
-			<p>{{student.format}}</p>
-			<p>{{student.format_description}}</p>
-			<p>{{student.gender}}</p>
+			<div ng-repeat="student in schools" style="display: inline-block; width:48%;border:1px solid green">
+				<school-data school="student"></school-data>
+		</div>
 		</div>
 	</body>
 	<script>
 	var app = angular.module("myModule",[]);
+	app.directive("schoolData",function(){
+		return {
+			templateUrl:"one-school.html",
+			scope:{
+				school:"="
+			}
+		}
+	})
 	app.controller("schoolController",function ($scope,$http) {
 	$scope.name="School data";
 	$scope.search=function()
 	{
-	$http.get("https://code.org/schools.json"+$scope.searchText).then(
+	$http.get("https://code.org/schools.json").then(
 	function success(responseData) {
 	console.log(":)");
 	console.log(responseData.data);
